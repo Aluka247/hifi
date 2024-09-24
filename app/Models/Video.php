@@ -21,18 +21,17 @@ class  Video extends Model {
         $stmt->execute();
         return $stmt->get_result()->fetch_assoc();
     }
-
-    public function addVideo($data) {
-        // die(json_encode($data));
-        $stmt = $this->db->prepare("INSERT INTO videos (price, title, description) VALUES (?,?,?)");
-        $stmt->bind_param("iss", $data['price'], $data['title'], $data['description']);
-        
+    public function addVideo($data)
+    {
+        $stmt = $this->db->prepare("INSERT INTO videos (price, title, description, file_path) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $data['price'], $data['title'], $data['description'], $data['file_path']);
         return $stmt->execute();
     }
+    
 
     public function updateVideo($id, $data) {
-        $stmt = $this->db->prepare("UPDATE videos SET price = ?, title = ?, description = ? WHERE id = ?");
-        $stmt->bind_param("issi", $data['price'], $data['title'], $data['description'],$id);
+        $stmt = $this->db->prepare("UPDATE videos SET price = ?, title = ?, description = ?, file_path = ? WHERE id = ?");
+        $stmt->bind_param("isssi", $data['price'], $data['title'], $data['description'],$data['file_path'],$id);
         return $stmt->execute();
     }
 

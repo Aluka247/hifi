@@ -36,6 +36,7 @@ Router::delete('/videos/delete', [VideoController::class, 'deleteVideo']);
 
 
 
+Router::post('/upload', [VideoController::class, 'uploadVideo']);
 
 
 ?>

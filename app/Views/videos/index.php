@@ -25,6 +25,7 @@
         <th>Price</th>
         <th>Title</th>
         <th>Description</th>
+        <th>Media</th>
         <th>Actions</th>
         
     </tr>
@@ -43,6 +44,7 @@
 <td><?php echo $video['price'];?></td>
 <td><?php echo $video['title'];?></td>
 <td><?php echo $video['description'];?></td>
+<td><?php echo $video['file_path'];?></td>
 
 
 <td class="d-flex gap-2">

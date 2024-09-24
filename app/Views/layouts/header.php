@@ -23,7 +23,7 @@
 </div>
 
 <ul class="nav-ul">
-        <li class="nav-item"><a class="nav-link active" href="/hifi/home/">Blog</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/hifi/dashboard/">Dashboard</a></li>
 
         <li class="nav-item"><a class="nav-link" href="/hifi/users">Users</a></li>
 

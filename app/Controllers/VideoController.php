@@ -17,6 +17,9 @@ class VideoController
         $this->videoModel = new Video();
     }
 
+
+
+
     /**
      * Displays all Videos.
      */
@@ -49,27 +52,64 @@ class VideoController
             'price' => $_POST['price'],
             'title' => $_POST['title'],
             'description' => $_POST['description'],
+            'video' => $_POST['video'],
+      
             
         ];
+
+
+
+        if (isset($_FILES['video_file']) && $_FILES['video_file']['error'] === UPLOAD_ERR_OK) {
+            $targetDir = "uploads/"; // Define your target directory
+            $fileName = basename($_FILES['video_file']['name']);
+            $targetFilePath = $targetDir . $fileName;
+    
+            // Move the uploaded file to the target directory
+            if (move_uploaded_file($_FILES['video_file']['tmp_name'], $targetFilePath)) {
+                $data['file_path'] = $targetFilePath; // Set the file path
+            } else {
+                // Handle file upload error
+                $_SESSION['errorMessage'] = "File upload failed!";
+                header('Location: /hifi/videos/create'); // Redirect back to create page
+                exit;
+            }
+        } else {
+            $_SESSION['errorMessage'] = "No file uploaded!";
+            header('Location: /hifi/videos/create'); // Redirect back to create page
+            exit;
+        }
+
+
+
        // die(json_encode($data));
         $this->videoModel->addVideo($data);
         header('Location:/hifi/videos');
     }
 
+
+
+
+
+
+
+
+
+    
     /**
      * Displays the form to edit a Video.
      */
     public function editVideo()
     {
         $id = $_GET['id'];
-        // $courses = $this->course->getAllCourses();
-        // $levels = $this->level->getAllLevels();
-
-        //die($id);
-        $video = $this->videoModel->getVideoById($id);
-        View::render('videos/edit', ['video' => $video  //,'courses'=>$courses, 'levels'=>$levels
-    ]);
+        $video = $this->videoModel->getVideoById($id); // Ensure this returns the video data
+        if (!$video) {
+            // Handle the case where the video doesn't exist, e.g., redirect or show an error
+            header('Location: /hifi/videos');
+            exit;
+        }
+        View::render('videos/edit', ['video' => $video]); // Ensure 'video' is passed correctly
     }
+    
 
     /**
      * Updates a Video in the database.
@@ -82,6 +122,7 @@ class VideoController
             'price' => $_POST['price'],
             'title' => $_POST['title'],
             'description' => $_POST['description'],
+            'video' => $_POST['video'],
         ];
 
 

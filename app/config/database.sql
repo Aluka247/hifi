@@ -6,13 +6,15 @@ CREATE TABLE  users (
     age INT NOT NULL
 );
 
--- CREATE TABLE IF NOT EXISTS videos (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     price INT(255) NOT NULL,
---     title VARCHAR(25) NOT NULL,
---     description VARCHAR(225) NOT NULL,
---     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
+CREATE TABLE videos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,  -- to store the path to the uploaded video file
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 -- CREATE TABLE IF NOT EXISTS levels (
 --     id INT AUTO_INCREMENT PRIMARY KEY,

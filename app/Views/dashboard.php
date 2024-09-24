@@ -29,7 +29,12 @@ include 'app/Views/layouts/header.php'?>
 
     <div class="vid">
 
-    <img src="/hifi/assets/photos/yellow-girl.jpg" alt="">
+    <video controls width="400">
+    <source src="<?php echo $video['file_path']; ?>" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
 
     </div>
 
@@ -45,9 +50,6 @@ include 'app/Views/layouts/header.php'?>
         <?php endforeach;
         
         ?>
-   
-
-
 
 <?php
 
