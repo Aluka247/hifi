@@ -96,6 +96,7 @@ class VideoController
     public function deleteVideo()
     {
         $id = $_POST['id'];
+      // die($_POST['id']);
         $this->videoModel->deleteVideo($id);
         header('Location: /hifi/videos');
     }

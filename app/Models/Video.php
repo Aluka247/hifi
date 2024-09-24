@@ -39,6 +39,7 @@ class  Video extends Model {
     public function deleteVideo($id) {
         $stmt = $this->db->prepare("DELETE FROM videos WHERE id = ?");
         $stmt->bind_param("i", $id);
+       // die($id);
         return $stmt->execute();
     }
 

@@ -13,7 +13,7 @@
 <div class="form-bg" >
 <h3 class="sign-up-text">Post New Product</h3>
 
-    <form action="/hifi/videos/store" method="post">
+    <form action="/hifi/videos/store" method="post" enctype="multipart/form-data">
        <?php
        include "form.php"
 

@@ -43,11 +43,11 @@
 <td class="d-flex gap-2">
 <a class="btn btn-xs btn-primary" href="/hifi/users/edit?id=<?php echo $user['id'];?>">Edit</a>
 
-<form id="myForm" action="/hifi/users/delete" method="post">
+<form id='<?php echo "myForm{$user['id']}"?>' action="/hifi/users/delete" method="post">
 <input type="hidden" name="id" value="<?= $user['id']; ?>">
 <input type="hidden" name="_method" value="delete">
 
-<button onclick="conFirmDelete()" class="btn btn-xs btn-danger" type="button">Delete</button>
+<button onclick="conFirmDelete(<?php echo $user['id'];?>)" class="btn btn-xs btn-danger" type="button">Delete</button>
 </form>
 
 </td>
