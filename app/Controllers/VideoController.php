@@ -134,6 +134,7 @@ class VideoController
     /**
      * Deletes a Video from the database.
      */
+
     public function deleteVideo()
     {
         $id = $_POST['id'];

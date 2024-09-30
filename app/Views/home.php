@@ -10,7 +10,11 @@
 
 <h1>HOME PAGE</h1>
 
+<div><?php echo $videos; ?></div>
 
+<?php  
+
+?>
 
 
 </body>

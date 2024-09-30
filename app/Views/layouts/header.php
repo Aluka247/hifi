@@ -13,7 +13,7 @@
 </head>
 <body>
 
-
+<?php ?>
 
 <div class="menu-overlay"></div>
 <nav class="myNavBar">
@@ -32,12 +32,26 @@
         <li class="nav-item"><a class="nav-link" href="/hifi/auth/login">Login</a></li>
 
         <li class="nav-item"><a class="nav-link" href="/users/contact">Contact</a></li>
+
+        <li class="float-end">
+          <span>
+         <?php 
+         if(isset($_SESSION['username'])){
+          echo 'Welcome '. $_SESSION['username'];
+         }
+         ?>
+          </span>
+        </li>
       </ul>
 
       <div class="menu-bars">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
+
+         
+
+
 </nav>
 
 

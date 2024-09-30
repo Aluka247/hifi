@@ -2,7 +2,7 @@
 require_once 'vendor/autoload.php';  // Composer autoload file
 
 use App\Core\Router;
-
+session_start();
 
 
 // Initialize the router

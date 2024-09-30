@@ -15,9 +15,12 @@ class Router
         self::$basePath = $basePath;
     }
 
+
+
+    //--------------------------------------------------------------
+
     public static function get($uri, $action)
     {
-      
         
         self::$routes['GET'][trim(self::$basePath . $uri, '/')] = $action;
     }
@@ -32,8 +35,6 @@ class Router
 
     public static function put($uri, $action)
     {
-      
-        
         self::$routes['PUT'][trim(self::$basePath . $uri, '/')] = $action;
     }
 
@@ -42,16 +43,17 @@ class Router
         self::$routes['POST'][trim(self::$basePath . $uri, '/')] = $action;
     }
 
+
+    //------------------------------------------------------------------
+
     public function resolve()
     {
-
-
-    
-
 
         $method = Request::Method();
         $uri = trim(Request::Route(), '/');
         // $uri = preg_replace('#^' . preg_quote(trim(self::$basePath, '/')) . '#', '', $uri);
+//die(json_encode(self::$routes));
+
 
         if (isset(self::$routes[$method][$uri])) {
             $action = self::$routes[$method][$uri];
@@ -59,6 +61,7 @@ class Router
                 [$controller, $method] = $action;
                 $controller = new $controller;
                 $controller->$method();
+
             } else {
                 call_user_func($action);
             }

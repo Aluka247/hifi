@@ -1,6 +1,6 @@
 <?php  
 namespace App\Controllers;
-session_start();
+//session_start();
 use App\Models\User;
 use App\Core\View;
 use App\Models\Video;
@@ -41,7 +41,7 @@ class AuthController{
             $_SESSION['username'] = $user['name'];
 
             $videos = $this-> videoModel->getAllVideos();
-           return View::render('dashboard', ['successMessage' => "Login successfull", 'videos' => $videos ]);
+           return View::render('/dashboard', ['successMessage' => "Login successfull", 'videos' => $videos ]);
 
         }else{
 

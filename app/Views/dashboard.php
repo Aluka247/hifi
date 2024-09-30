@@ -11,9 +11,18 @@
 <?php
 include 'app/Views/layouts/header.php'?>
 
+<?php
+
+if(isset($successMessage)){
+echo "<div class='alert alert-success'>$successMessage</div>";
+}
 
 
-<div class="alert alert-success"><?php echo $successMessage ?></div>
+
+
+?>
+
+
 
 
 

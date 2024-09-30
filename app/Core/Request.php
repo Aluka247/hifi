@@ -17,11 +17,11 @@ class Request
         return $method;
     }
 
-    /**
-     * Get the requested URI.
-     *
-     * @return string
-     */
+
+
+
+
+    //Get the requested URI.
     public static function Route()
     {
         $uri = $_SERVER['REQUEST_URI'];

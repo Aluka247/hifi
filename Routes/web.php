@@ -25,7 +25,6 @@ Router::put('/users/update', [UsersController::class, 'update']);
 Router::delete('/users/delete', [UsersController::class, 'delete']);
 
 
-
 //videos controller
 Router::get('/videos', [VideoController::class, 'VideoIndex']);
 Router::get('/videos/create', [VideoController::class, 'createVideo']);

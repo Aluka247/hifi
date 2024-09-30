@@ -21,6 +21,6 @@ class HomeController
         $videos = $this->videoModel->getAllVideos();
 
         // Pass the videos to the view
-        View::render('home', ['videos' => $videos, 'message' => 'Welcome to Home']);
+        View::render('home', ['videos' => $videos, 'message' => 'Welcome to Home' ]);
     }
 }
