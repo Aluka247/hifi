@@ -52,7 +52,7 @@ class VideoController
             'price' => $_POST['price'],
             'title' => $_POST['title'],
             'description' => $_POST['description'],
-            'video' => $_POST['video'],
+            'video_file' => $_POST['video_file'],
       
             
         ];
@@ -66,7 +66,7 @@ class VideoController
     
             // Move the uploaded file to the target directory
             if (move_uploaded_file($_FILES['video_file']['tmp_name'], $targetFilePath)) {
-                $data['file_path'] = $targetFilePath; // Set the file path
+                $data['video_file'] = $targetFilePath; // Set the file path
             } else {
                 // Handle file upload error
                 $_SESSION['errorMessage'] = "File upload failed!";
@@ -118,12 +118,14 @@ class VideoController
     public function updateVideo()
     {
         $id = $_POST['id'];
+        $currentVideo = $this->videoModel->getVideoById($id);
         $data = [
             'price' => $_POST['price'],
             'title' => $_POST['title'],
             'description' => $_POST['description'],
-            'video' => $_POST['video'],
+            'video_file' =>  $currentVideo ['video_file'],
         ];
+        
 
 
    // die(json_encode($data));

@@ -33,30 +33,68 @@ class Model{
             // If database exist, fetch the values as an associative array
             $dbExists = $stm->fetch_array();
 
-            // If Database does not exist, create it
+
+
+
+//---------------------------------------------------------------
             if (!$dbExists) {
-                
-                // Create it
                 $this->db->query("CREATE DATABASE $database");
                 echo "Database created successfully.<br>";
+            }
+    
+            // Select the database
+            $this->db->query("USE $database");
+    
+            // Load and execute the SQL file
+            $sql = file_get_contents('app/config/database.sql');
+    
+            // Execute the SQL file (whether it's new or existing)
+            if ($this->db->multi_query($sql)) {
+                do {
+                    if ($result = $this->db->store_result()) {
+                        $result->free();
+                    }
+                } while ($this->db->more_results() && $this->db->next_result());
+
+                
+                error_log("Tables created successfully from the SQL file.");
+
+            } else {
+                echo "Error executing SQL file: " . $this->db->error;
+            }
+        }
+//------------------------------------------------------------
+
+
+
+
+
+            // If Database does not exist, create it
+    //         if (!$dbExists) {
+                
+    //             // Create it
+    //             $this->db->query("CREATE DATABASE $database");
+    //             echo "Database created successfully.<br>";
         
-                // Select the database    
-                $this->db->query("USE $database");
+    //             // Select the database    
+    //             $this->db->query("USE $database");
 
 
                 
         
-                // Read and execute the SQL file
-                $sql = file_get_contents("app/config/database.sql");
-                $this->db->query($sql);
-                echo "Tables created successfully from the SQL file.";
-            } else {
-              //  echo "Database already exists. No action taken.";
-                $this->db->query("USE $database");
-            }
+    //             // Read and execute the SQL file
+    //             $sql = file_get_contents("app/config/database.sql");
+    //             $this->db->query($sql);
+    //             echo "Tables created successfully from the SQL file.";
+    //         } else {
+    //           //  echo "Database already exists. No action taken.";
+    //             $this->db->query("USE $database");
+    //         }
         
 
-    }
+    // }
+
+
 
 
 

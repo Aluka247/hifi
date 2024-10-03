@@ -23,15 +23,15 @@ class  Video extends Model {
     }
     public function addVideo($data)
     {
-        $stmt = $this->db->prepare("INSERT INTO videos (price, title, description, file_path) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $data['price'], $data['title'], $data['description'], $data['file_path']);
+        $stmt = $this->db->prepare("INSERT INTO videos (price, title, description, video_file) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("isss", $data['price'], $data['title'], $data['description'], $data['video_file']);
         return $stmt->execute();
     }
     
 
     public function updateVideo($id, $data) {
-        $stmt = $this->db->prepare("UPDATE videos SET price = ?, title = ?, description = ?, file_path = ? WHERE id = ?");
-        $stmt->bind_param("isssi", $data['price'], $data['title'], $data['description'],$data['file_path'],$id);
+        $stmt = $this->db->prepare("UPDATE videos SET price = ?, title = ?, description = ?, video_file = ? WHERE id = ?");
+        $stmt->bind_param("isssi", $data['price'], $data['title'], $data['description'],$data['video_file'],$id);
         return $stmt->execute();
     }
 

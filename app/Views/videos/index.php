@@ -1,6 +1,13 @@
 <?php include 'app/Views/layouts/header.php'?>
 
 
+
+<style>
+   
+</style>
+
+
+
     <?php  $baseUrl="hifi"   ?>
  
     <br>
@@ -31,7 +38,7 @@
     </tr>
 </thead>
 
-<tbody>
+<tbody class="">
     <?php
     foreach ($videos as $video) {
     ?>
@@ -39,15 +46,20 @@
 
 
 
-<tr>
-<td><?php echo $video['id'];?></td>
+<tr class="align-middle">
+<td class=""><?php echo $video['id'];?></td>
 <td><?php echo $video['price'];?></td>
 <td><?php echo $video['title'];?></td>
 <td><?php echo $video['description'];?></td>
-<td><?php echo $video['file_path'];?></td>
+<td>
+<video width="100" controls>
+        <source src="<?php echo $video['video_file']; ?>" type="video/mp4">
+        
+    </video>
+</td>
 
 
-<td class="d-flex gap-2">
+<td class="d-flex gap-2 py-4 align-center">
 <a class="btn btn-xs btn-primary" href="/hifi/videos/edit?id=<?php echo $video['id'];?>">Edit</a>
 
 <form id='<?php echo "myForm{$video['id']}"?>' action="/hifi/videos/delete" method="post">

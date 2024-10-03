@@ -39,7 +39,7 @@ echo "<div class='alert alert-success'>$successMessage</div>";
     <div class="vid">
 
     <video controls width="400">
-    <source src="<?php echo $video['file_path']; ?>" type="video/mp4">
+    <source src="<?php echo $video['video_file']; ?>" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 

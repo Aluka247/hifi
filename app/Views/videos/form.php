@@ -5,8 +5,11 @@
 
 
 <div class="form-group">
+<?php if (!empty($video['video_file'])) ?>    <!-- PHP -->
         <label for="video">Select Video:</label>
-        <input type="file" name="video_file" class="form-control" accept="video/*" >
+        <input type="file" name="video_file" class="form-control" accept="video/*" value="<?php echo $video['video_file']??'No media'; ?>">
+
+       
     </div>
 
 
